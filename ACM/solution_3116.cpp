@@ -1,0 +1,37 @@
+#include<iostream>
+#include<cstdio>
+
+#include<cmath>
+#include<cstring>
+int a[100000],b[100000],c[100000];
+char al[1000][1000],bl[1000][1000];
+using namespace std;
+int main()
+{
+	int lena,lenb,lenc;
+	int i;
+	memset(a,0,sizeof(a));
+	memset(b,0,sizeof(b));
+	memset(c,0,sizeof(c));
+	scanf("%s %s", &al[1],&bl[1]);
+	lena = strlen(al[1]);
+	lenb = strlen(bl[1]);
+	for (i=0; i<=lena-1; i++) a[lena-i] = al[1][i] - 48;
+	for (i=0; i<=lenb-1; i++) b[lenb-i] = bl[1][i] - 48;
+	lenc = 1;
+	while (lenc<=lena||lenc<=lenb)
+	{
+		c[lenc] = c[lenc] + a[lenc] + b[lenc];
+		c[lenc+1] = c[lenc+1] + c[lenc]/10;
+		c[lenc] = c[lenc] % 10;
+		lenc ++;
+	}
+	while (c[lenc] == 0 && lenc>1)
+	lenc = lenc -1;
+	for (i=lenc; i>=1; i--)
+	{
+		cout<<c[i];
+	}
+	cout<<endl;
+	return 0;
+}
