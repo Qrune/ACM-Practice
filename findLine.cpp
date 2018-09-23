@@ -21,6 +21,7 @@ int main(){
 	
 	if (N==1){
 		printf("possible");
+		return 0;
 	}
 	
 	srand(31337);
